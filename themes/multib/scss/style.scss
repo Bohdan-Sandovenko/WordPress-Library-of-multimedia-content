@@ -1,0 +1,347 @@
+/*
+Theme Name: Multib
+Author: the WordPress team
+Author URI: Daniel, Bohdan
+Version: 1.0
+Requires at least: 5.0
+Tested up to: 5.4
+Requires PHP: 7.0
+License: GNU General Public License v2 or later
+*/
+
+$color-black: #000;
+$color-dark: #2c2c2c;
+$color-darker: #2a2a2d;
+$color-white: #fff;
+$color-primary: #e5bc85;
+$color-secondary: #965e2a;
+
+$color-red: #F66477;
+$color-yellow: #F7AC13;
+$color-text: #3a3a3a;
+$color-light-text: #ccc;
+$color-light-bg: #f5f5f7;
+$color-light-bg-section: #fafafc;
+$color-border: #b2b2b2;
+$color-btn: $color-primary;
+
+$breakpoint-desktop: 1199px;
+$breakpoint-laptop: 991px;
+$breakpoint-tablet: 767px;
+
+* {
+  font-family: 'Open Sans', sans-serif;
+}
+
+.bg-cover {
+  background-size: cover;
+  background-position: center;
+}
+
+.light-bg {
+  background-color: $color-light-bg;
+}
+
+.light-bg-section {
+  background-color: $color-light-bg-section;
+}
+
+.dark-bg {
+  background-color: $color-dark;
+}
+
+.primary-bg {
+  background-color: $color-primary;
+}
+
+.secondary-bg {
+  background-color: $color-secondary;
+}
+
+img, video {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: $color-dark;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+.h1, h1 {
+  font-weight: 700 !important;
+  color: $color-dark;
+}
+
+.h2, h2 {
+  color: $color-dark;
+  font-size: 32px;
+  font-weight: 500;
+
+  @media (max-width: $breakpoint-tablet) {
+    font-size: 32px;
+  }
+
+  strong {
+    font-weight: 500;
+    background-color: $color-primary;
+    padding: 0 6px 4px;
+  }
+}
+
+.h3,
+h3 {
+  color: $color-dark;
+  font-size: 24px;
+}
+
+.h4,
+h4 {
+  color: $color-dark;
+  font-size: 20px;
+  line-height: 140%;
+  font-weight: 600;
+}
+
+.h5,
+h5 {
+  font-size: 16px;
+  font-weight: 600;
+  color: $color-dark;
+}
+
+.subtitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: $color-text;
+}
+
+.text {
+  color: $color-text;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75em;
+  letter-spacing: 0.6px;
+
+  &.f-16 {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  &.color-light {
+    color: $color-light-text;
+  }
+}
+
+ul.color-light li {
+  &, p {
+    color: $color-light-text !important;
+  }
+}
+
+.f-18 {
+  font-size: 18px;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.xs-text {
+  font-size: 12px;
+}
+
+.eyebrow {
+  display: block;
+  color: $color-primary;
+  font-size: 14.4px;
+  font-weight: 500;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.highlight {
+  color: $color-primary;
+}
+
+.color-white {
+
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  div,
+  span {
+    color: $color-white;
+  }
+
+  .h2:after {
+    display: none;
+  }
+}
+
+.color-dark {
+
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  div,
+  span {
+    color: $color-dark;
+  }
+}
+
+.color-primary {
+
+  &,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  div,
+  span {
+    color: $color-primary;
+  }
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.button {
+  padding: 6px 32px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: ease 0.3s;
+  display: inline-block;
+  border: 2px solid transparent;
+  font-weight: 500;
+  letter-spacing: 2px;
+
+  i {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &.button-secondary {
+    color: $color-primary;
+    border-color: $color-primary;
+    background-color: transparent;
+
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+
+  &.button-white {
+    color: $color-white;
+    border-color: $color-secondary;
+    color: $color-secondary;
+    background-color: $color-white;
+
+    &:hover {
+      background-color: $color-secondary;
+      color: $color-white;
+    }
+  }
+
+  &.button-primary {
+    color: $color-white;
+    border-color: $color-secondary;
+    background-color: $color-secondary;
+
+    &:hover {
+      background-color: transparent;
+      color: $color-secondary;
+    }
+  }
+
+  &.button-border {
+    color: $color-secondary;
+    border-color: transparent;
+    border-left: 2px solid $color-secondary;
+    background-color: transparent;
+
+    &:hover {
+      background-color: transparent;
+      color: $color-secondary;
+      border-color: $color-secondary;
+    }
+  }
+}
+
+input, textarea, .custom-select, select {
+  border: 1px solid $color-border;
+  padding: 12px 16px;
+  outline: none;
+  width: 100%;
+
+  &:focus {
+    border-color: $color-primary;
+  }
+
+  &.error {
+    border-color: #ed2326;
+  }
+}
+
+textarea {
+  resize: none;
+  height: 150px;
+}
+
+.blog-content {
+  p, .wp-block-column {
+    margin-bottom: 24px;
+  }
+
+  ul, h1, h2, h3, h4 {
+    margin: 24px 0;
+  }
+
+  ul {
+    list-style: disc;
+    padding-left: 16px;
+  }
+
+  .wp-block-button__link {
+    padding: 8px 20px;
+    font-size: 18px;
+    font-weight: 500;
+    transition: ease 0.3s;
+    display: inline-block;
+    border: 1px solid transparent;
+    border-radius: 100px !important;
+    color: $color-white !important;
+    background-color: $color-btn !important;
+  
+      &:hover {
+        background-color: transparent !important;
+        color: $color-btn !important;
+        border-color: $color-btn !important;
+    }
+  }
+}
