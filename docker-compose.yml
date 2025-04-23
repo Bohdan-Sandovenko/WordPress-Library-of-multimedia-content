@@ -41,6 +41,7 @@ services:
     volumes:
       - wordpress_data:/home/wordpress
       - ./themes:/home/wordpress/wp-content/themes
+      - ./uploads:/home/wordpress/wp-content/uploads
 
   node:
     image: node:latest
