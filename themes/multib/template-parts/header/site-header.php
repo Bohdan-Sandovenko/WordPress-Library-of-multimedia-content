@@ -12,7 +12,7 @@
 <header class="position-relative d-block top-0 start-0 end-0 navbar navbar-expand-lg p-0 fixed">
     <nav class="container d-flex align-items-center justify-content-between py-2 py-lg-4">
         <div class="logo">
-            <a class="navbar-brand m-0 position-relative scroll-to-start" href="#">
+            <a class="navbar-brand m-0 position-relative scroll-to-start" href="<?php echo home_url(); ?>">
                 <img src="<?php echo get_template_directory_uri(); ?>/assets/images/logo.svg" alt="">
             </a>
         </div>
