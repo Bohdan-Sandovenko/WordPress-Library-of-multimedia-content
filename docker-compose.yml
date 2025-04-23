@@ -46,11 +46,14 @@ services:
     image: node:latest
     working_dir: /app
     volumes:
-      - ./themes/multib:/app
+      - ./themes/multib:/app:delegated
       - /app/node_modules
     command: tail -f /dev/null
     ports:
       - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
 
 volumes:
   wordpress_data:
