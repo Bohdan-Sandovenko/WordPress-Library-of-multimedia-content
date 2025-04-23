@@ -1,0 +1,116 @@
+@use '../abstract/variables' as *;
+
+.hero-section {
+    background: linear-gradient(rgba($color-primary, 0.9), rgba($color-primary, 0.8)), url('../assets/images/library-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    padding: 120px 0;
+    color: $color-white;
+    text-align: center;
+    position: relative;
+
+    .container {
+        position: relative;
+        z-index: 2;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        
+        @media (max-width: 768px) {
+            font-size: 2.5rem;
+        }
+    }
+
+    p {
+        font-size: 1.25rem;
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0.9;
+    }
+
+    .site-search {
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+
+        form {
+            display: flex;
+            align-items: center;
+            background: $color-white;
+            border-radius: 50px;
+            padding: 0.5rem;
+            box-shadow: 0 5px 15px rgba($color-black, 0.1);
+        }
+
+        .search-field {
+            flex: 1;
+            border: none;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            background: transparent;
+            color: $color-text;
+
+            &::placeholder {
+                color: rgba($color-text, 0.6);
+            }
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .search-submit {
+            background: $color-primary;
+            border: none;
+            color: $color-white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: darken($color-primary, 10%);
+                transform: translateY(-2px);
+            }
+
+            svg {
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+
+    // Декоративні елементи
+    &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: $color-white;
+        clip-path: polygon(0 100%, 100% 100%, 100% 0);
+    }
+
+    // Анімація для елементів при завантаженні
+    .animate-up {
+        animation: slideUp 0.8s ease forwards;
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
