@@ -26,8 +26,8 @@ get_header(); ?>
   <?php
   $popular_args = array(
     'post_type' => 'post',
-    'posts_per_page' => 5,
-    'orderby' => 'comment_count',
+    'posts_per_page' => -1,
+    'orderby' => 'date',
     'order' => 'DESC'
   );
   $popular_posts = new WP_Query($popular_args);
@@ -57,6 +57,64 @@ get_header(); ?>
   else:
     echo '<p>No popular posts found.</p>';
   endif;
+  ?>
+</div>
+
+<!-- Best Author Section -->
+<h2>Best Author</h2>
+<div class="best-author">
+  <?php
+  // Get the author with the most posts
+  $author_args = array(
+    'orderby' => 'post_count',
+    'order' => 'DESC',
+    'number' => 1
+  );
+  $authors = get_users($author_args);
+  
+  if (!empty($authors)) {
+    $best_author = $authors[0];
+    $author_posts = get_posts(array(
+      'author' => $best_author->ID,
+      'posts_per_page' => 3,
+      'orderby' => 'date',
+      'order' => 'DESC'
+    ));
+    ?>
+    <div class="author-profile">
+      <div class="author-avatar">
+        <?php echo get_avatar($best_author->ID, 96); ?>
+      </div>
+      <div class="author-info">
+        <h3><?php echo esc_html($best_author->display_name); ?></h3>
+        <p class="author-bio"><?php echo esc_html(get_the_author_meta('description', $best_author->ID)); ?></p>
+        <p class="author-stats">Total works: <?php echo count_user_posts($best_author->ID); ?></p>
+      </div>
+    </div>
+    
+    <h4>Latest Works</h4>
+    <div class="author-works">
+      <?php
+      if (!empty($author_posts)) {
+        foreach ($author_posts as $post) {
+          setup_postdata($post);
+          ?>
+          <div class="author-work-item">
+            <h5><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+            <p class="work-date"><?php echo get_the_date(); ?></p>
+          </div>
+          <?php
+        }
+        wp_reset_postdata();
+      } else {
+        echo '<p>No works found for this author.</p>';
+      }
+      ?>
+    </div>
+    <?php
+  } else {
+    echo '<p>No authors found.</p>';
+  }
   ?>
 </div>
 
