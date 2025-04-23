@@ -6,6 +6,8 @@ This is a development environment for the Multib WordPress theme, which includes
 ## Authors
 - Bohdan Sandovenko
 - Daniil Mudrak
+- Yaroslav Fomichov
+- Yevheniia Zalevska
 
 ## Requirements
 - Docker
