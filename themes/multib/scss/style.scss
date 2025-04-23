@@ -10,7 +10,9 @@ License: GNU General Public License v2 or later
 */
 
 @import 'layout/footer';
+@import 'layout/header';
 @import 'layout/account';
+@import 'layout/hero-section';
 
 $color-black: #000;
 $color-dark: #2c2c2c;
@@ -442,6 +444,8 @@ h2 {
   margin-bottom: 4rem;
 
   .popular-item {
+    display: flex;
+    flex-direction: column;
     background: $color-light-bg-section;
     border-radius: 12px;
     overflow: hidden;
@@ -453,8 +457,13 @@ h2 {
     }
 
     .post-thumbnail {
+      flex-grow: 1;
+      display: flex;
+
       a {
-        display: block;
+        display: flex;
+        width: 100%;
+
         img {
           width: 100%;
           height: auto;
