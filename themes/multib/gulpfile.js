@@ -8,7 +8,8 @@ const style = () => {
 }
 
 const watch = () => {
-  gulp.watch('./scss/**/*.scss', style)
+  gulp.watch('./scss/**/*.scss', { ignoreInitial: false }, style)
 }
 
 exports.watch = watch
+exports.style = style
