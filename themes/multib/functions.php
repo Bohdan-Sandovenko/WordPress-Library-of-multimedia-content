@@ -291,3 +291,46 @@ function cc_mime_types($mimes) {
 }
 
 add_filter('upload_mimes', 'cc_mime_types');
+
+function redirect_register_success() {
+    if (is_page('register') && isset($_GET['success']) && $_GET['success'] === 'yes') {
+        wp_redirect(home_url());
+        exit;
+    }
+}
+add_action('template_redirect', 'redirect_register_success');
+
+add_filter('the_content', 'custom_restricted_page_message');
+
+function custom_restricted_page_message($content) {
+    if (is_page('account') && !is_user_logged_in()) {
+        $login_url = wp_login_url(get_permalink());
+        $register_url = site_url('/register/');
+
+        $message = '<div class="wpuf-message">';
+        $message .= '<p>This page is restricted. Please <a href="' . esc_url($login_url) . '">Log in</a> or <a href="' . esc_url($register_url) . '">Register</a> to view this page.</p>';
+        $message .= '</div>';
+
+        return $message;
+    }
+
+    return $content;
+}
+
+function add_login_link_script() {
+    if (is_page('login')) {
+        ?>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const lostPasswordLink = document.querySelector('a[href*="action=lostpassword"]');
+            if (lostPasswordLink) {
+                const newDiv = document.createElement('div');
+                newDiv.innerHTML = '<a href="<?php echo esc_url(site_url('/register/')); ?>">Register</a> | <a href="<?php echo esc_url(site_url('/login/?action=lostpassword')); ?>">Lost Password</a>';
+                lostPasswordLink.parentNode.replaceChild(newDiv, lostPasswordLink);
+            }
+        });
+        </script>
+        <?php
+    }
+}
+add_action('wp_footer', 'add_login_link_script');
